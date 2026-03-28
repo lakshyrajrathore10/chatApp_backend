@@ -20,11 +20,15 @@ app.get("/", (req, res) => {
     success: true,
     message: "MobileChat backend is running",
     endpoints: {
-      messages: "/api/messages",
+      postMessage: "/message",
+      getMessages: "/messages",
+      compatibility: "/api/messages",
     },
   });
 });
 
+app.post("/message", messageRoutes);
+app.get("/messages", messageRoutes);
 app.use("/api/messages", messageRoutes);
 
 app.use(errorHandler);
