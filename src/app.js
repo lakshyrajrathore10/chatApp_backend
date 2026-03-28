@@ -15,6 +15,16 @@ app.use(
 
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "MobileChat backend is running",
+    endpoints: {
+      messages: "/api/messages",
+    },
+  });
+});
+
 app.use("/api/messages", messageRoutes);
 
 app.use(errorHandler);
